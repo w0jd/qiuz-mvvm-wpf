@@ -29,10 +29,10 @@ namespace quizMVVM.Model
         int IdQuiz;
 
     }
-    internal class listOfQuestions(pytania)
+/*    internal class listOfQuestions(pytania obj)
         {
 
-        }
+        }*/
     internal class MainModel
     {
         static SQLiteConnection conn = new SQLiteConnection(@"Data Source=quiz.db;Version=3");

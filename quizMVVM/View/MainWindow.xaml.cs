@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Data.SQLite;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel;
+
 
 namespace quizMVVM
 {
@@ -23,6 +35,11 @@ namespace quizMVVM
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            static SQLiteConnection conn = new SQLiteConnection(@"Data Source=quiz.db;Version=3");
         }
     }
 }

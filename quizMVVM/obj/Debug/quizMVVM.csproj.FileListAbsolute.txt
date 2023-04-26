@@ -1,0 +1,7 @@
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.csproj.AssemblyReference.cache
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.csproj.SuggestedBindingRedirects.cache
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\MainWindow.g.cs
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\App.g.cs
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM_Content.g.cs
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM_MarkupCompile.cache
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM_MarkupCompile.lref
