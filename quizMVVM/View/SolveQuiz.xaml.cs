@@ -1,5 +1,4 @@
-﻿using quizMVVM.View_Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace quizMVVM
+namespace quizMVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy SolveQuiz.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SolveQuiz : UserControl
     {
-        public MainWindow()
+        public SolveQuiz()
         {
             InitializeComponent();
-
-            DataContext = new MainViewModel();
         }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\
+C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\
 quizMVVM
 none
 false
 DEBUG;TRACE
-C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\App.xaml
-1219584333
-2-124778462
-71060169540
-19-2074541782
-MainWindow.xaml;
+C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\App.xaml
+31153393308
+2-2109660068
+15-1588506752
+19-972214549
+MainWindow.xaml;View\CreateQuiz.xaml;View\SolveQuiz.xaml;
 
 True
 
