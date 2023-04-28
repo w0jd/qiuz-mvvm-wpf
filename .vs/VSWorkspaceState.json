@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\quizMVVM"
+    "\\quizMVVM",
+    "\\quizMVVM\\Model"
   ],
-  "SelectedNode": "\\quizMVVM\\App.xaml",
+  "SelectedNode": "\\quizMVVM\\Model\\MainModel.cs",
   "PreviewInSolutionExplorer": false
 }
