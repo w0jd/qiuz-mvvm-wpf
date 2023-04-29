@@ -11,14 +11,21 @@ using System.IO;
 namespace quizMVVM.Model
 {
     internal class quiz{
-       public quiz(Int64 id ,string nazwa)
+        Int64 id;
+        string nazwa;
+        public quiz(Int64 id ,string nazwa)
         {
 
             this.id = id;
             this.nazwa = nazwa;
+
+            
+        }   
+        public string giveString()
+        {
+             return this.id.ToString()+", "+this.nazwa;
         }
-        Int64 id;
-        string nazwa;
+    
     }
     internal class pytania
     {
@@ -46,7 +53,9 @@ namespace quizMVVM.Model
                 Int64 id = (Int64)reader["id_quiz"];
                 string nazwaQuiz = (string)reader["nazwa_quizu"];
                 quiz JedenQuiz = new quiz(id,nazwaQuiz);
-                arrayList.Add(JedenQuiz);
+
+                string wart=JedenQuiz.giveString();
+                arrayList.Add(wart);
             }
             return arrayList;
 

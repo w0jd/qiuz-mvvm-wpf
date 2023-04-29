@@ -24,7 +24,7 @@
             <Button Grid.Column="1" Content="Rozwiąż Quiz"  Height="25" VerticalAlignment="Top" ></Button>
         </Grid>
         <Grid Grid.Row="2">
-            <ListBox ></ListBox>
+            <ListBox ItemsSource="{Binding Items, Mode=OneWay}"></ListBox>
         </Grid>
         <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10"></Label>
 
