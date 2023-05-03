@@ -29,7 +29,7 @@ namespace quizMVVM.View_Model
             Console.WriteLine(conn);
             ArrayList array = new ArrayList();
             Items =   MainModel.ShowAllQuizes(conn);
-            Console.WriteLine("dupaa");
+            //Console.WriteLine("dupaa");
 
             Console.WriteLine(Items[0]);
             conn.Close();
