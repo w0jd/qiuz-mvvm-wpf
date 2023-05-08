@@ -18,15 +18,16 @@ namespace quizMVVM.View_Model
         private string _id;
         private Model.MainModel model = new Model.MainModel();
        static string databaseFilename = "quiz.db";
-        static private string databasePath = Path.Combine("C:\\Users\\Wojtek\\Documents\\GitHub\\qiuz-mvvm-wpf\\quizMVVM", databaseFilename);
-        static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath};Version=3");
+       static string localPath= AppDomain.CurrentDomain.BaseDirectory;
         private ArrayList _items;
         public event PropertyChangedEventHandler PropertyChanged;
-
+        static string ConPath = localPath.Replace("\\bin\\Debug","");
+        static private string databasePath = Path.Combine(ConPath, databaseFilename);
+        static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
         private ArrayList list=new ArrayList();
         public SolveQuizViewModel()
         {
-            Console.WriteLine(conn);
+            Console.WriteLine(localPath);
             ArrayList array = new ArrayList();
             Items =   MainModel.ShowAllQuizes(conn);
             //Console.WriteLine("dupaa");
