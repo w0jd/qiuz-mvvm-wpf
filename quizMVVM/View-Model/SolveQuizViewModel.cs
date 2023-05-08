@@ -17,9 +17,13 @@ namespace quizMVVM.View_Model
     {
         private string _id;
         private Model.MainModel model = new Model.MainModel();
-       static string databaseFilename = "quiz.db";
-        static private string databasePath = Path.Combine("C:\\Users\\Wojtek\\Documents\\GitHub\\qiuz-mvvm-wpf\\quizMVVM", databaseFilename);
-        static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath};Version=3");
+        static string databaseFilename = "quiz.db";
+
+        static string ConnectionString =@"Data Source=..\..\quiz.db";
+        public static string path = Path.GetFullPath(@"qiuz-mvvm-wpf\quizMVVM\quiz.db");
+        
+
+        static SQLiteConnection conn = new SQLiteConnection($"{ConnectionString};Version=3");
         private ArrayList _items;
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,10 +32,14 @@ namespace quizMVVM.View_Model
         {
             Console.WriteLine(conn);
             ArrayList array = new ArrayList();
+            Console.WriteLine();
+            Console.WriteLine(path);
+            Console.WriteLine();
             Items =   MainModel.ShowAllQuizes(conn);
             //Console.WriteLine("dupaa");
+           
 
-            Console.WriteLine(Items[0]);
+            //Console.WriteLine(Items[0]);
             conn.Close();
         }
         public ArrayList Items
