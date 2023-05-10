@@ -51,7 +51,8 @@
             <CheckBox ></CheckBox>
             <TextBlock  Text="{Binding odp4, Mode=OneWay}" ></TextBlock>
         </Grid>
-        <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10"></Label>
+        <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10" Grid.Row="0"></Label>
+        <Button Grid.Row="5">dalej</Button>
 
     </Grid>
 </UserControl>

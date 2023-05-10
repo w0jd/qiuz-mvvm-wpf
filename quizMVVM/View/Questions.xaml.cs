@@ -1,4 +1,6 @@
-﻿using System;
+﻿using quizMVVM.View_Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,14 @@ namespace quizMVVM.View
     /// <summary>
     /// Interaction logic for Questions.xaml
     /// </summary>
-    public partial class Questions : Page
+    public partial class Questions : UserControl
     {
-        public Questions()
+        public Questions(ArrayList list)
         {
             InitializeComponent();
+            DataContext = new QuestionsViewModel(list);
+            InitializeComponent();
+
         }
     }
 }

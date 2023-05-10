@@ -11,8 +11,7 @@ using System.IO;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
-
-
+using quizMVVM.View;
 
 namespace quizMVVM.View_Model
 {
@@ -20,8 +19,8 @@ namespace quizMVVM.View_Model
     {
         private string _id;
         private Model.MainModel model = new Model.MainModel();
-       static string databaseFilename = "quiz.db";
-       static string localPath= AppDomain.CurrentDomain.BaseDirectory;
+        static string databaseFilename = "quiz.db";
+        static string localPath= AppDomain.CurrentDomain.BaseDirectory;
         private ArrayList _items;
         public event PropertyChangedEventHandler PropertyChanged;
         static string ConPath = localPath.Replace("\\bin\\Debug","");
@@ -43,6 +42,7 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Items)));
             } 
         }
+
         public string Id 
         {
             get { return this._id; }
@@ -52,9 +52,13 @@ namespace quizMVVM.View_Model
                 {
                     this._id = value;
                     this.OnPropertyChanged(nameof(Id));
-                    MainModel.ShowQuestions(conn, Id);
-                    conn.Close();
 
+                    var list=MainModel.ShowQuestions(conn, Id);
+                    conn.Close();
+                    var Questions = new Questions(list);
+                    var window = new Window();
+                    window.Content = Questions;
+                    window.Show();
                 }
             } 
         }
