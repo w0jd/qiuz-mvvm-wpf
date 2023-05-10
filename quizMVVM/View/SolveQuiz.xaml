@@ -13,6 +13,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+          
 
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
@@ -21,11 +22,12 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <TextBox Text="{Binding Id}" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Top" />
-            <Button Grid.Column="1" Content="Rozwiąż Quiz"  Height="25" VerticalAlignment="Top" ></Button>
+            <Button Grid.Column="1" Content="Rozwiąż Quiz"  Height="25" VerticalAlignment="Top"  Command="{Binding Wybierz}" ></Button>
         </Grid>
         <Grid Grid.Row="2">
             <ListBox ItemsSource="{Binding Items, Mode=OneWay}"></ListBox>
         </Grid>
+
         <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10"></Label>
 
     </Grid>

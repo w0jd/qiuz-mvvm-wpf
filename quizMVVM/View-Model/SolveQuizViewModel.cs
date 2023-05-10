@@ -10,6 +10,9 @@ using quizMVVM.Model;
 using System.IO;
 using System.Collections;
 using System.ComponentModel;
+using System.Windows.Input;
+
+
 
 namespace quizMVVM.View_Model
 {
@@ -27,12 +30,9 @@ namespace quizMVVM.View_Model
         private ArrayList list=new ArrayList();
         public SolveQuizViewModel()
         {
-            Console.WriteLine(localPath);
+          
             ArrayList array = new ArrayList();
             Items =   MainModel.ShowAllQuizes(conn);
-            //Console.WriteLine("dupaa");
-
-            Console.WriteLine(Items[0]);
             conn.Close();
         }
         public ArrayList Items
@@ -52,12 +52,13 @@ namespace quizMVVM.View_Model
                 {
                     this._id = value;
                     this.OnPropertyChanged(nameof(Id));
-                    Console.WriteLine(_id);
-
-               
+                    MainModel.ShowQuestions(conn, Id);
+                    conn.Close();
 
                 }
             } 
         }
+  
     }
+ 
 }
