@@ -32,3 +32,5 @@ C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.cspr
 C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.csproj.CopyComplete
 C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.exe
 C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.pdb
+C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\View\Questions.g.cs
+C:\Users\Paweł\Source\Repos\w0jd\qiuz-mvvm-wpf\quizMVVM\obj\Debug\View\Questions.baml

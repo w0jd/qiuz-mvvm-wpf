@@ -162,20 +162,22 @@ namespace quizMVVM.View_Model
     
         public QuestionsViewModel(List<string> list)
         {
-        
-            _list = list;
-            var ciag= list[0].Split(',');
-           
-            int len = _list.Count;
-            _len = len;
-            _tresc =ciag[1];
-            _odp1 = ciag[2];
-            _odp2 = ciag[3];
-            _odp3 = ciag[4];
-            _odp4 = ciag[5];
-            List<string> listaNiePrzet = new List<string>() { _odp1,_odp2,_odp3,_odp4};
-            var rnd = new Random();
-            var result = listaNiePrzet.OrderBy(item => rnd.Next());
+            if (list.Count()!=0)
+            {
+                _list = list;
+                var ciag = list[0].Split(',');
+
+                int len = _list.Count;
+                _len = len;
+                _tresc = ciag[1];
+                _odp1 = ciag[2];
+                _odp2 = ciag[3];
+                _odp3 = ciag[4];
+                _odp4 = ciag[5];
+                List<string> listaNiePrzet = new List<string>() { _odp1, _odp2, _odp3, _odp4 };
+                var rnd = new Random();
+                var result = listaNiePrzet.OrderBy(item => rnd.Next());
+            }
         }
 
     }

@@ -55,10 +55,17 @@ namespace quizMVVM.View_Model
 
                     var list=MainModel.ShowQuestions(conn, Id);
                     conn.Close();
-                    var Questions = new Questions(list);
-                    var window = new Window();
-                    window.Content = Questions;
-                    window.Show();
+                    if (list.Count()!=0)
+                    {
+                        var Questions = new Questions(list);
+                        var window = new Window();
+                        window.Content = Questions;
+                        window.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie ma takiego quizu");
+                    }
                 }
             } 
         }

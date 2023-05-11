@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.ComponentModel;
 using System.Collections;
 using System.IO;
+using System.Windows;
 
 namespace quizMVVM.Model
 {
@@ -86,9 +87,10 @@ namespace quizMVVM.Model
             Int64 id_QUIZ = 0;
             Int64.TryParse(id_quiz, out id_QUIZ);
             command = conn.CreateCommand();
-            command.CommandText = $"SELECT * FROM pytania WHERE id_quiz={id_QUIZ}";
+            command.CommandText = $"SELECT * FROM pytania WHERE id_quiz= (SELECT id_quiz FROM quizy WHERE public_id={id_QUIZ} )";
             reader = command.ExecuteReader();
             List<string> arrayList = new List<string>();
+
             while (reader.Read())
             {
                 Int64 id = (Int64)reader["id_pytania"];
@@ -102,7 +104,6 @@ namespace quizMVVM.Model
                 string wart=Pytania.giveString();
                 arrayList.Add(wart);
             }
-            
             return arrayList;
         }
     }
