@@ -27,7 +27,7 @@ namespace quizMVVM.Model
         }   
         public string giveString()
         {
-             return this.id.ToString()+", "+this.nazwa;
+             return this.id.ToString()+", "+this.nazwa+", "+this.public_id+", "+this.private_id;
         }
     
     }
@@ -57,7 +57,7 @@ namespace quizMVVM.Model
     }
     internal class MainModel
     {
-       public static ArrayList ShowAllQuizes(SQLiteConnection conn)
+       public static List<string> ShowAllQuizes(SQLiteConnection conn)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
@@ -65,7 +65,7 @@ namespace quizMVVM.Model
             command = conn.CreateCommand();
             command.CommandText = "SELECT * FROM quizy";
             reader = command.ExecuteReader();
-            ArrayList arrayList = new ArrayList();
+            List<string> arrayList = new List<string>();
             while (reader.Read()) { 
                 Int64 id = (Int64)reader["id_quiz"];
                 string nazwaQuiz = (string)reader["nazwa_quizu"];
@@ -75,17 +75,20 @@ namespace quizMVVM.Model
                 string wart=JedenQuiz.giveString();
                 arrayList.Add(wart);
             }
+       
             return arrayList;
         }
-       public static ArrayList ShowQuestions(SQLiteConnection conn,string id_quiz)
+       public static List<string> ShowQuestions(SQLiteConnection conn,string id_quiz)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
             conn.Open();
+            Int64 id_QUIZ = 0;
+            Int64.TryParse(id_quiz, out id_QUIZ);
             command = conn.CreateCommand();
-            command.CommandText = $"SELECT * FROM pyatnia WHERE id_quiz={id_quiz}";
+            command.CommandText = $"SELECT * FROM pytania WHERE id_quiz={id_QUIZ}";
             reader = command.ExecuteReader();
-            ArrayList arrayList = new ArrayList();
+            List<string> arrayList = new List<string>();
             while (reader.Read())
             {
                 Int64 id = (Int64)reader["id_pytania"];
@@ -99,6 +102,7 @@ namespace quizMVVM.Model
                 string wart=Pytania.giveString();
                 arrayList.Add(wart);
             }
+            
             return arrayList;
         }
     }

@@ -10,6 +10,8 @@ using quizMVVM.Model;
 using System.IO;
 using System.Collections;
 using System.ComponentModel;
+using System.Windows.Input;
+using quizMVVM.View;
 
 namespace quizMVVM.View_Model
 {
@@ -18,31 +20,21 @@ namespace quizMVVM.View_Model
         private string _id;
         private Model.MainModel model = new Model.MainModel();
         static string databaseFilename = "quiz.db";
-
-        static string ConnectionString =@"Data Source=..\..\quiz.db";
-        public static string path = Path.GetFullPath(@"qiuz-mvvm-wpf\quizMVVM\quiz.db");
-        
-
-        static SQLiteConnection conn = new SQLiteConnection($"{ConnectionString};Version=3");
-        private ArrayList _items;
+        static string localPath= AppDomain.CurrentDomain.BaseDirectory;
+        private List<string> _items;
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private ArrayList list=new ArrayList();
+        static string ConPath = localPath.Replace("\\bin\\Debug","");
+        static private string databasePath = Path.Combine(ConPath, databaseFilename);
+        static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
+        private List<string> list =new List<string>();
         public SolveQuizViewModel()
         {
-            Console.WriteLine(conn);
-            ArrayList array = new ArrayList();
-            Console.WriteLine();
-            Console.WriteLine(path);
-            Console.WriteLine();
-            Items =   MainModel.ShowAllQuizes(conn);
-            //Console.WriteLine("dupaa");
-           
 
-            //Console.WriteLine(Items[0]);
+            List<string> array = new List<string>();
+            Items =   MainModel.ShowAllQuizes(conn);
             conn.Close();
         }
-        public ArrayList Items
+        public List<string> Items
         {
             get => _items;
             set {
@@ -50,6 +42,7 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Items)));
             } 
         }
+
         public string Id 
         {
             get { return this._id; }
@@ -59,30 +52,17 @@ namespace quizMVVM.View_Model
                 {
                     this._id = value;
                     this.OnPropertyChanged(nameof(Id));
-                    Console.WriteLine(_id);
 
-               
-
+                    var list=MainModel.ShowQuestions(conn, Id);
+                    conn.Close();
+                    var Questions = new Questions(list);
+                    var window = new Window();
+                    window.Content = Questions;
+                    window.Show();
                 }
             } 
         }
-        //private DelegateCommand _checkId;
-        //public ICommand CheckId
-        //{
-        //    get { if (this._checkId == null)
-        //            _checkId = new DelegateCommand(new Action(CheckIdExecuted), new Func<bool>(CheckIdCanExecute));
-        //    return _checkId;
-        //    }
-        //}
-        //public bool CheckIdCanExecute()
-        //{
-        //    //do ustalenia wzór 
-        //    return true;
-        //}
-        //public void CheckIdExecuted()
-        //{
-
-        //    //if select public_id from quiz where public_id like {_id}
-        //}
+  
     }
+ 
 }

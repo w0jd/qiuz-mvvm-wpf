@@ -24,7 +24,7 @@ namespace quizMVVM
         public MainWindow()
         {
             InitializeComponent();
-
+            this.DataContext = new SolveQuizViewModel();
             DataContext = new MainViewModel();
         }
     }
