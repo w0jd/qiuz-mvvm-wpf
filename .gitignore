@@ -5,3 +5,5 @@
 *.vsidx
 *.cache
 *.dll
+/quizMVVM/bin/Debug/quizMVVM.exe
+/quizMVVM/obj/Debug/quizMVVM.exe
