@@ -23,16 +23,16 @@
         
         <TextBlock Grid.Row="1" Text="{Binding tresc, Mode=OneWay}" ></TextBlock>
         <Grid Grid.Row="2">
-            <RadioButton Content="{Binding odp1}" IsChecked="{Binding SelectedAnswer}" Name="odp1" GroupName="dop"  ></RadioButton>
+            <RadioButton Content="{Binding odp1}" IsChecked="{Binding SelectedAnswer1}" Name="odp1" GroupName="dop"  ></RadioButton>
         </Grid>
         <Grid Grid.Row="3">
-            <RadioButton Content="{Binding odp2}" IsChecked="{Binding SelectedAnswer}" GroupName="dop"></RadioButton>
+            <RadioButton Content="{Binding odp2}" IsChecked="{Binding SelectedAnswer2}" GroupName="dop"></RadioButton>
         </Grid>
         <Grid Grid.Row="4">
-            <RadioButton Content="{Binding odp3}" IsChecked="{Binding SelectedAnswer}" GroupName="dop"></RadioButton>
+            <RadioButton Content="{Binding odp3}" IsChecked="{Binding SelectedAnswer3}" GroupName="dop"></RadioButton>
         </Grid>
         <Grid Grid.Row="5">
-            <RadioButton Content="{Binding odp4}" IsChecked="{Binding SelectedAnswer}" GroupName="dop" ></RadioButton>
+            <RadioButton Content="{Binding odp4}" IsChecked="{Binding SelectedAnswer4}" GroupName="dop" ></RadioButton>
         </Grid>
         <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10" Grid.Row="0"></Label>
         <Button Grid.Row="6" Command="{Binding NextCommand}">dalej</Button>

@@ -9,5 +9,9 @@
              Background="White">
     <Grid>
         <Label FontSize="30" HorizontalAlignment="Center" Content="Create Quiz"></Label>
+     
+        <TextBox Text="{Binding Id}" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Top" />
+        <ContentControl Content="{Binding Questions}" />
+        <Button  Content="Stwórz"  Height="25" VerticalAlignment="Top"   ></Button>
     </Grid>
 </UserControl>

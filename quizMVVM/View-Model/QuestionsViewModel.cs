@@ -32,22 +32,87 @@ namespace quizMVVM.View_Model
         private List<string> _list;
     
         int i = 0;
-        private string _selectedAnswer;
-
-  public string SelectedAnswer
+        private string _selectedAnswer1;
+        private string _selectedAnswer2;
+        private string _selectedAnswer3;
+        private string _selectedAnswer4;
+        private int nr = 0;
+        public string SelectedAnswer1
     {
-        get { return _selectedAnswer; }
+        get { return _selectedAnswer1; }
         set
         {
-            if (_selectedAnswer != value)
+            if (_selectedAnswer1 != value)
             {
-                _selectedAnswer = value;
-                    var dupa = nameof(SelectedAnswer);
-                OnPropertyChanged(nameof(SelectedAnswer));
+                _selectedAnswer1 = value;
+                
+                OnPropertyChanged(nameof(SelectedAnswer1));
+                    if (SelectedAnswer1 == "True")
+                    {
+                        nr = 1;
+                    }
             }
         }
     }
-
+        public string SelectedAnswer2
+        {
+            get { return _selectedAnswer2; }
+            set
+            {
+                if (_selectedAnswer2!= value)
+                {
+                    _selectedAnswer2 = value;
+                    OnPropertyChanged(nameof(SelectedAnswer2));
+                    if (SelectedAnswer2 == "True")
+                    {
+                        nr = 2;
+                    }
+                }
+            }
+        }
+        public string SelectedAnswer3
+        {
+            get { return _selectedAnswer3; }
+            set
+            {
+                if (_selectedAnswer3 != value)
+                {
+                    _selectedAnswer3 = value;
+                    OnPropertyChanged(nameof(SelectedAnswer3));
+                    if (SelectedAnswer3 == "True")
+                    {
+                        nr = 3;
+                    }
+                }
+            }
+        }
+        public string SelectedAnswer4
+        {
+            get { return _selectedAnswer4; }
+            set
+            {
+                if (_selectedAnswer4 != value)
+                {
+                    _selectedAnswer4 = value;
+                    OnPropertyChanged(nameof(SelectedAnswer4));
+                    if (SelectedAnswer4 == "True")
+                    {
+                        nr = 4;
+                    }
+                }
+            }
+        }
+        public bool checkAndNext(int nr, List<string> listaPrzet, List<string> listaNiePrzet)
+        {
+            if (listaNiePrzet[nr] == listaPrzet[nr])
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public string odp1
         {
             get => _odp1;
@@ -93,6 +158,7 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(tresc)));
             }
         }
+
     
         public QuestionsViewModel(List<string> list)
         {
@@ -102,12 +168,14 @@ namespace quizMVVM.View_Model
            
             int len = _list.Count;
             _len = len;
-            tresc =ciag[1];
+            _tresc =ciag[1];
             _odp1 = ciag[2];
             _odp2 = ciag[3];
             _odp3 = ciag[4];
             _odp4 = ciag[5];
-
+            List<string> listaNiePrzet = new List<string>() { _odp1,_odp2,_odp3,_odp4};
+            var rnd = new Random();
+            var result = listaNiePrzet.OrderBy(item => rnd.Next());
         }
 
     }
