@@ -21,20 +21,20 @@ namespace quizMVVM.View_Model
         private Model.MainModel model = new Model.MainModel();
         static string databaseFilename = "quiz.db";
         static string localPath= AppDomain.CurrentDomain.BaseDirectory;
-        private ArrayList _items;
+        private List<string> _items;
         public event PropertyChangedEventHandler PropertyChanged;
         static string ConPath = localPath.Replace("\\bin\\Debug","");
         static private string databasePath = Path.Combine(ConPath, databaseFilename);
         static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
-        private ArrayList list=new ArrayList();
+        private List<string> list =new List<string>();
         public SolveQuizViewModel()
         {
-          
-            ArrayList array = new ArrayList();
+
+            List<string> array = new List<string>();
             Items =   MainModel.ShowAllQuizes(conn);
             conn.Close();
         }
-        public ArrayList Items
+        public List<string> Items
         {
             get => _items;
             set {

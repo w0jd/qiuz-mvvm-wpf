@@ -22,7 +22,7 @@ namespace quizMVVM.View
     /// </summary>
     public partial class Questions : UserControl
     {
-        public Questions(ArrayList list)
+        public Questions(List<string> list)
         {
             InitializeComponent();
             DataContext = new QuestionsViewModel(list);
