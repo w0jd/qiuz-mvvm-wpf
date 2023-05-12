@@ -1,5 +1,6 @@
 ﻿using quizMVVM.Model;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -162,23 +163,48 @@ namespace quizMVVM.View_Model
     
         public QuestionsViewModel(List<string> list)
         {
+            int[] random_answers = { 2, 3, 4, 5 };
+            int questionNumber = 0;
             if (list.Count()!=0)
             {
                 _list = list;
-                var ciag = list[0].Split(',');
+   //             while (questionNumber < _list.Count()) {
+                    var ciag = list[questionNumber].Split(',');
+                    int len = _list.Count;
+                    _len = len;
+                    shuffle();
+                    _tresc = ciag[1];
+                    _odp1 = ciag[random_answers[0]];
+                    _odp2 = ciag[random_answers[1]];
+                    _odp3 = ciag[random_answers[2]];
+                    _odp4 = ciag[random_answers[3]];
 
-                int len = _list.Count;
-                _len = len;
-                _tresc = ciag[1];
-                _odp1 = ciag[2];
-                _odp2 = ciag[3];
-                _odp3 = ciag[4];
-                _odp4 = ciag[5];
+      //          }
+
+               
+
+                
                 List<string> listaNiePrzet = new List<string>() { _odp1, _odp2, _odp3, _odp4 };
                 var rnd = new Random();
                 var result = listaNiePrzet.OrderBy(item => rnd.Next());
             }
+            void shuffle()
+            {
+                for(int i = random_answers.Length-1; i >0 ; i--)
+                {
+                    var rand = new Random();
+                    int r = rand.Next(0, i);
+                    int temp= random_answers[i];
+                    random_answers[i] = random_answers[r];
+                    random_answers[r] = temp;
+                }
+            }
         }
+        
 
+        void NextQuestion()
+        {
+
+        }
     }
 }

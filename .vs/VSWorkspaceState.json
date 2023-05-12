@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\quizMVVM",
-    "\\quizMVVM\\Model"
+    "\\quizMVVM\\Model",
+    "\\quizMVVM\\View-Model"
   ],
-  "SelectedNode": "\\quizMVVM\\MainWindow.xaml",
+  "SelectedNode": "\\quizMVVM\\View-Model\\SolveQuizViewModel.cs",
   "PreviewInSolutionExplorer": false
 }
