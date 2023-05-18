@@ -51,6 +51,12 @@ namespace quizMVVM.View_Model
                     if (SelectedAnswer1 == "True")
                     {
                         nr = 1;
+                
+                        string ciag = _list[i];
+                        var ciag1 = ciag.Split(',');
+                        string wart = ciag1[2];
+                        bool czy = checkAndNext(nr, _odp1, wart);
+                        i++;
                     }
             }
         }
@@ -67,6 +73,12 @@ namespace quizMVVM.View_Model
                     if (SelectedAnswer2 == "True")
                     {
                         nr = 2;
+                      
+                        string ciag = _list[i];
+                        var ciag1 = ciag.Split(',');
+                        string wart = ciag1[2];
+                        bool czy = checkAndNext(nr, _odp2, wart);
+                        i++;
                     }
                 }
             }
@@ -83,6 +95,12 @@ namespace quizMVVM.View_Model
                     if (SelectedAnswer3 == "True")
                     {
                         nr = 3;
+                    
+                        string ciag = _list[i];
+                        var ciag1 = ciag.Split(',');
+                        string wart = ciag1[2];
+                        bool czy = checkAndNext(nr, _odp3, wart);
+                        i++;
                     }
                 }
             }
@@ -98,14 +116,20 @@ namespace quizMVVM.View_Model
                     OnPropertyChanged(nameof(SelectedAnswer4));
                     if (SelectedAnswer4 == "True")
                     {
+                       
                         nr = 4;
+                        string  ciag = _list[i];
+                        var ciag1 = ciag.Split(',');
+                        string wart = ciag1[2];
+                        bool czy=checkAndNext(nr, _odp4,wart );
+                        i++;
                     }
                 }
             }
         }
-        public bool checkAndNext(int nr, List<string> listaPrzet, List<string> listaNiePrzet)
+        public bool checkAndNext(int nr, string wart,string wartZbazy)
         {
-            if (listaNiePrzet[nr] == listaPrzet[nr])
+            if (wartZbazy == wart)
             {
                 return true;
             }
@@ -204,7 +228,7 @@ namespace quizMVVM.View_Model
 
         void NextQuestion()
         {
-
+            Console.WriteLine("dupa");
         }
     }
 }
