@@ -37,7 +37,27 @@ namespace quizMVVM.View_Model
         private string _selectedAnswer2;
         private string _selectedAnswer3;
         private string _selectedAnswer4;
+        private string Wart;
+        private string Ilosc;
         private int nr = 0;
+        public string wart
+        {
+            get => Wart;
+            set
+            {
+                Wart = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(wart)));
+            }
+        }
+        public string ilosc
+        {
+            get => Ilosc;
+            set
+            {
+                Ilosc = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ilosc)));
+            }
+        }
         public string SelectedAnswer1
     {
         get { return _selectedAnswer1; }
@@ -57,6 +77,7 @@ namespace quizMVVM.View_Model
                         string wart = ciag1[2];
                         bool czy = checkAndNext(nr, _odp1, wart);
                         i++;
+                        showNext(_list);
                     }
             }
         }
@@ -79,6 +100,7 @@ namespace quizMVVM.View_Model
                         string wart = ciag1[2];
                         bool czy = checkAndNext(nr, _odp2, wart);
                         i++;
+                        showNext(_list);
                     }
                 }
             }
@@ -101,6 +123,7 @@ namespace quizMVVM.View_Model
                         string wart = ciag1[2];
                         bool czy = checkAndNext(nr, _odp3, wart);
                         i++;
+                        showNext(_list);
                     }
                 }
             }
@@ -123,6 +146,8 @@ namespace quizMVVM.View_Model
                         string wart = ciag1[2];
                         bool czy=checkAndNext(nr, _odp4,wart );
                         i++;
+                        showNext(_list);
+
                     }
                 }
             }
@@ -137,6 +162,7 @@ namespace quizMVVM.View_Model
             {
                 return false;
             }
+           
         }
         public string odp1
         {
@@ -183,16 +209,53 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(tresc)));
             }
         }
-
+        public void showNext(List<string> list)
+        {
+            int[] random_answers = { 2, 3, 4, 5 };
+            int questionNumber = i;
+            if (list.Count() >= i)
+            {
+                _list = list;
+                var ciag = list[questionNumber].Split(',');
+                int len = _list.Count;
+                _len = len;
+                shuffle();
+                _tresc = ciag[1];
+                _odp1 = ciag[random_answers[0]];
+                _odp2 = ciag[random_answers[1]];
+                _odp3 = ciag[random_answers[2]];
+                _odp4 = ciag[random_answers[3]];
+                List<string> listaNiePrzet = new List<string>() { _odp1, _odp2, _odp3, _odp4 };
+                var rnd = new Random();
+                var result = listaNiePrzet.OrderBy(item => rnd.Next());
+                OnPropertyChanged(nameof(odp1));
+                OnPropertyChanged(nameof(tresc));
+                OnPropertyChanged(nameof(odp2));
+                OnPropertyChanged(nameof(odp3));
+                OnPropertyChanged(nameof(odp4));
+            }
+            void shuffle()
+            {
+                for (int i = random_answers.Length - 1; i > 0; i--)
+                {
+                    var rand = new Random();
+                    int r = rand.Next(0, i);
+                    int temp = random_answers[i];
+                    random_answers[i] = random_answers[r];
+                    random_answers[r] = temp;
+                }
+            }
+        }
     
         public QuestionsViewModel(List<string> list)
         {
             int[] random_answers = { 2, 3, 4, 5 };
-            int questionNumber = 0;
-            if (list.Count()!=0)
+            int questionNumber  = i;
+            if (list.Count() != 0)
             {
-                _list = list;
-   //             while (questionNumber < _list.Count()) {
+             
+                    _list = list;
+                    //             while (questionNumber < _list.Count()) {
                     var ciag = list[questionNumber].Split(',');
                     int len = _list.Count;
                     _len = len;
@@ -203,14 +266,15 @@ namespace quizMVVM.View_Model
                     _odp3 = ciag[random_answers[2]];
                     _odp4 = ciag[random_answers[3]];
 
-      //          }
+                    //          }
 
-               
 
+
+
+                    List<string> listaNiePrzet = new List<string>() { _odp1, _odp2, _odp3, _odp4 };
+               /*     var rnd = new Random();
+                    var result = listaNiePrzet.OrderBy(item => rnd.Next());*/
                 
-                List<string> listaNiePrzet = new List<string>() { _odp1, _odp2, _odp3, _odp4 };
-                var rnd = new Random();
-                var result = listaNiePrzet.OrderBy(item => rnd.Next());
             }
             void shuffle()
             {
@@ -226,9 +290,6 @@ namespace quizMVVM.View_Model
         }
         
 
-        void NextQuestion()
-        {
-            Console.WriteLine("dupa");
-        }
+     
     }
 }

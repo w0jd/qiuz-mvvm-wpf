@@ -35,7 +35,20 @@
             <RadioButton Content="{Binding odp4}" IsChecked="{Binding SelectedAnswer4}" GroupName="dop" ></RadioButton>
         </Grid>
         <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10" Grid.Row="0"></Label>
-        <Button Grid.Row="6" Command="{Binding NextQuestion}">dalej</Button>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>Licznik porprawnych</TextBlock>
+            <TextBlock Text="{Binding Wart, Mode=OneWay}"/>
+            <TextBlock>/</TextBlock>
+            <TextBlock Text="{Binding Ilosc, Mode=OneWay}"/>
+
+        </Grid>
 
     </Grid>
 </UserControl>
