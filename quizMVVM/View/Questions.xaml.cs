@@ -26,8 +26,10 @@ namespace quizMVVM.View
         {
             InitializeComponent();
             DataContext = new QuestionsViewModel(list);
-            InitializeComponent();
+            //InitializeComponent();
 
         }
+
+
     }
 }

@@ -24,5 +24,6 @@ namespace quizMVVM.View
         {
             InitializeComponent();
         }
+
     }
 }

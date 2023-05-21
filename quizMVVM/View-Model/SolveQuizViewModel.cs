@@ -48,8 +48,8 @@ namespace quizMVVM.View_Model
             get { return this._id; }
             set 
             { 
-                if(!string.Equals(this._id, value))
-                {
+                //if(!string.Equals(this._id, value))
+                //{
                     this._id = value;
                     this.OnPropertyChanged(nameof(Id));
 
@@ -66,7 +66,7 @@ namespace quizMVVM.View_Model
                     {
                         MessageBox.Show("Nie ma takiego quizu");
                     }
-                }
+               // }
             } 
         }
   

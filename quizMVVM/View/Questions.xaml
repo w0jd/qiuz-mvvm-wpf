@@ -23,16 +23,16 @@
         
         <TextBlock Grid.Row="1" Text="{Binding tresc, Mode=OneWay}" ></TextBlock>
         <Grid Grid.Row="2">
-            <RadioButton Content="{Binding odp1}" IsChecked="{Binding SelectedAnswer1}" Name="odp1" GroupName="dop"  ></RadioButton>
+            <Button Content="{Binding odp1}" Command="{Binding SelectAnswer}" CommandParameter="{Binding odp1}" ></Button>
         </Grid>
         <Grid Grid.Row="3">
-            <RadioButton Content="{Binding odp2}" IsChecked="{Binding SelectedAnswer2}" GroupName="dop"></RadioButton>
+            <Button Content="{Binding odp2}" Command="{Binding SelectAnswer}" CommandParameter="{Binding odp2}" ></Button>
         </Grid>
         <Grid Grid.Row="4">
-            <RadioButton Content="{Binding odp3}" IsChecked="{Binding SelectedAnswer3}" GroupName="dop"></RadioButton>
+            <Button Content="{Binding odp3}" Command="{Binding SelectAnswer}" CommandParameter="{Binding odp3}" ></Button>
         </Grid>
         <Grid Grid.Row="5">
-            <RadioButton Content="{Binding odp4}" IsChecked="{Binding SelectedAnswer4}" GroupName="dop" ></RadioButton>
+            <Button Content="{Binding odp4}" Command="{Binding SelectAnswer}" CommandParameter="{Binding odp4}" ></Button>
         </Grid>
         <Label FontSize="20" HorizontalAlignment="Center" Content="Wpisz kod quizu" VerticalAlignment="Bottom" Margin="10" Grid.Row="0"></Label>
         <Grid Grid.Row="6">
@@ -43,10 +43,10 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock>Licznik porprawnych</TextBlock>
-            <TextBlock Text="{Binding Wart, Mode=OneWay}"/>
-            <TextBlock>/</TextBlock>
-            <TextBlock Text="{Binding Ilosc, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0">Licznik porprawnych</TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding Wart}"/>
+            <TextBlock Grid.Column="2">/</TextBlock>
+            <TextBlock Grid.Column="3" Text="{Binding Ilosc}"/>
 
         </Grid>
 

@@ -9,6 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -37,10 +39,10 @@ namespace quizMVVM.View_Model
         private string _selectedAnswer2;
         private string _selectedAnswer3;
         private string _selectedAnswer4;
-        private string Wart;
-        private string Ilosc;
+        private int Wart =0;
+        private int Ilosc;
         private int nr = 0;
-        public string wart
+        public int wart
         {
             get => Wart;
             set
@@ -49,7 +51,7 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(wart)));
             }
         }
-        public string ilosc
+        public int ilosc
         {
             get => Ilosc;
             set
@@ -58,20 +60,19 @@ namespace quizMVVM.View_Model
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ilosc)));
             }
         }
-        public string SelectedAnswer1
+        public string SelectedAnswer1 
     {
         get { return _selectedAnswer1; }
-        set
-        {
-            if (_selectedAnswer1 != value)
+            set
             {
-                _selectedAnswer1 = value;
-                
-                OnPropertyChanged(nameof(SelectedAnswer1));
+                if (_selectedAnswer1 != value)
+                {
+                    _selectedAnswer1 = value;
+
+                    OnPropertyChanged(nameof(SelectedAnswer1));
                     if (SelectedAnswer1 == "True")
                     {
                         nr = 1;
-                
                         string ciag = _list[i];
                         var ciag1 = ciag.Split(',');
                         string wart = ciag1[2];
@@ -79,9 +80,10 @@ namespace quizMVVM.View_Model
                         i++;
                         showNext(_list);
                     }
+                    
+                }
             }
         }
-    }
         public string SelectedAnswer2
         {
             get { return _selectedAnswer2; }
@@ -211,9 +213,10 @@ namespace quizMVVM.View_Model
         }
         public void showNext(List<string> list)
         {
+            
             int[] random_answers = { 2, 3, 4, 5 };
             int questionNumber = i;
-            if (list.Count() >= i)
+            if (list.Count() > i)
             {
                 _list = list;
                 var ciag = list[questionNumber].Split(',');
@@ -255,7 +258,6 @@ namespace quizMVVM.View_Model
             {
              
                     _list = list;
-                    //             while (questionNumber < _list.Count()) {
                     var ciag = list[questionNumber].Split(',');
                     int len = _list.Count;
                     _len = len;
@@ -266,7 +268,6 @@ namespace quizMVVM.View_Model
                     _odp3 = ciag[random_answers[2]];
                     _odp4 = ciag[random_answers[3]];
 
-                    //          }
 
 
 
@@ -288,8 +289,51 @@ namespace quizMVVM.View_Model
                 }
             }
         }
-        
 
-     
+
+        private ICommand _selectAnswer;
+        public ICommand SelectAnswer
+        {
+            get
+            {
+                if (_selectAnswer == null)
+                    _selectAnswer = new RelayCommand(i => this.Selected_Answer(i), null);
+                return _selectAnswer;
+
+            }
+        }
+        private void Selected_Answer(object q)
+        { 
+            //nie da się przekroczyć liczby pytań
+            if (i < _list.Count)
+            {
+                var ciag = _list[i].Split(',');
+                string good = ciag[2];
+
+                //sprawdź poprawność
+                if (q.Equals(good))
+                {
+                    Wart++;
+                    MessageBox.Show(Wart.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("nie ok");
+                }
+
+
+
+                i++;
+                showNext(_list);
+            }
+            else
+            {
+                MessageBox.Show("koniec");
+            }
+            
+        }
+
+
+
     }
 }

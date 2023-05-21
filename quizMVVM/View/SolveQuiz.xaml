@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <TextBox Text="{Binding Id}" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Top" />
             <ContentControl Content="{Binding Questions}" />
-            <Button Grid.Column="1" Content="Rozwiąż Quiz"  Height="25" VerticalAlignment="Top"   ></Button>
+            <Button Grid.Column="1" Content="Rozwiąż Quiz"  Height="25" VerticalAlignment="Top"  ></Button>
         </Grid>
         <Grid Grid.Row="2">
             <ListBox ItemsSource="{Binding Items, Mode=OneWay}"></ListBox>

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace quizMVVM.View_Model
 {
-    internal class RelayCommand
+    internal class RelayCommand : ICommand
     {
         public event EventHandler CanExecuteChanged
         {
