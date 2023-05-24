@@ -58,6 +58,7 @@ namespace quizMVVM.Model
     }
     internal class MainModel
     {
+        
        public static List<string> ShowAllQuizes(SQLiteConnection conn)
         {
             SQLiteDataReader reader;
@@ -83,6 +84,7 @@ namespace quizMVVM.Model
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
+            conn.Close();
             conn.Open();
             Int64 id_QUIZ = 0;
             Int64.TryParse(id_quiz, out id_QUIZ);
@@ -105,6 +107,16 @@ namespace quizMVVM.Model
                 arrayList.Add(wart);
             }
             return arrayList;
+        }
+        public static void AddQuiz(SQLiteConnection conn,string nazwa,string idCzyt,string idEdit)
+        {
+            SQLiteDataReader reader;
+            SQLiteCommand command;
+            conn.Open();
+            command = conn.CreateCommand();
+            command.CommandText = $"INSERT INTO quizy(nazwa_quizu,private_id,public_id) VALUES ({nazwa},{idEdit},{idCzyt})";
+            reader = command.ExecuteReader();
+            conn.Close();
         }
     }
 }
