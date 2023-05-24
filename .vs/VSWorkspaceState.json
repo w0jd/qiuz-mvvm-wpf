@@ -3,8 +3,9 @@
     "",
     "\\quizMVVM",
     "\\quizMVVM\\Model",
+    "\\quizMVVM\\View",
     "\\quizMVVM\\View-Model"
   ],
-  "SelectedNode": "\\quizMVVM\\View-Model\\SolveQuizViewModel.cs",
+  "SelectedNode": "\\quizMVVM\\View\\Questions.xaml",
   "PreviewInSolutionExplorer": false
 }
