@@ -29,32 +29,13 @@ namespace quizMVVM.View_Model
         {
             Console.WriteLine("dupa");
         }
-/*        public string Send
-        {
-            get { return _Send; }
-            set
-            {
-                _Send = value;
-                OnPropertyChanged(nameof(Send));
-                Console.WriteLine("dupa");
-            }
-        }
-        public string Par
-        {
-            get => _Par;
-            set
-            {
-                _Par = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Par)));
-            }
-        }*/
+
         public string Id
         {
             get { return this._id; }
             set
             {
-                if(!string.Equals(this._id, value))
-                {
+             
                 this._id = value;
                 this.OnPropertyChanged(nameof(Id));
 
@@ -73,7 +54,7 @@ namespace quizMVVM.View_Model
                 string edycja = jed.ToString() + dz.ToString() + set.ToString() + tys.ToString();
                 MainModel.AddQuiz(conn, Id, wybier, edycja);
 
-                 }
+                 
             }
         }
     }

@@ -24,5 +24,10 @@ namespace quizMVVM.View
         {
             InitializeComponent();
         }
+
+        private void tresc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

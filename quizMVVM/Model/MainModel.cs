@@ -114,7 +114,7 @@ namespace quizMVVM.Model
             SQLiteCommand command;
             conn.Open();
             command = conn.CreateCommand();
-            command.CommandText = $"INSERT INTO quizy(nazwa_quizu,private_id,public_id) VALUES ({nazwa},{idEdit},{idCzyt})";
+            command.CommandText = $"INSERT INTO quizy(nazwa_quizu,private_id,public_id) VALUES ('{nazwa}','{idEdit}','{idCzyt}')";
             reader = command.ExecuteReader();
             conn.Close();
         }

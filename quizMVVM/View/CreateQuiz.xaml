@@ -8,10 +8,46 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
     <Grid>
-        <Label FontSize="30" HorizontalAlignment="Center" Content="Create Quiz"></Label>
-     
-        <TextBox Text="{Binding Id}" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Center" Margin="0,0,0,50" TextAlignment="Center"/>
-        <ContentControl Content="{Binding Questions}" />
-        <Button  Content="Stwórz"  Height="25" VerticalAlignment="Center"  Command="{Binding Send}" CommandParameter="{Binding Par}"  ></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"  FontSize="15" HorizontalAlignment="Center" Content="Create Quiz"></Label>
+
+        <TextBox Grid.Row="1" Text="{Binding Id}" Grid.ColumnSpan="2" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Center"  Grid.Column="0"   TextAlignment="Center"/>
+        <ContentControl Grid.Row="2" Grid.ColumnSpan="1" Content="{Binding Questions}" />
+        <Button Grid.Row="3" Content="Stwórz" Grid.ColumnSpan="2"  Height="25" VerticalAlignment="Center"  Command="{Binding Send}" CommandParameter="{Binding Par}"  ></Button>
+        <Label Grid.Row="4" FontSize="15" HorizontalAlignment="Center" Content="Add questions" Grid.ColumnSpan="2"></Label>
+        <Label Grid.Row="5" FontSize="15" HorizontalAlignment="Center" Content="Tresc pytania" Grid.ColumnSpan="1"></Label>
+
+        <TextBox Grid.Row="5" Text="{Binding Tresc}" Grid.Column="1" Name="tresc" Height="25" VerticalAlignment="Center" TextAlignment="Center" TextChanged="tresc_TextChanged"/>
+        <Label Grid.Row="6" FontSize="15" HorizontalAlignment="Center"  Grid.Column="0" Content="odp1" Grid.ColumnSpan="1"></Label>
+        <TextBox Grid.Row="6" Text="{Binding odp1}" Name="odp1" Height="25" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1"/>
+        <Label Grid.Row="7" FontSize="15" HorizontalAlignment="Center" Content="odp2" Grid.ColumnSpan="1"></Label>
+        <TextBox Grid.Row="7" Text="{Binding odp2}" Grid.Column="1" Name="odp2" Height="25" VerticalAlignment="Center" TextAlignment="Center"/>
+        <Label Grid.Row="8" FontSize="15" HorizontalAlignment="Center" Content="odp3" Grid.ColumnSpan="1"></Label>
+        <TextBox Grid.Row="8" Text="{Binding odp3}" Name="odp3" Height="25" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1"/>
+        <Label Grid.Row="9" FontSize="15" HorizontalAlignment="Center" Content="odp4" Grid.ColumnSpan="1"></Label>
+        <TextBox Grid.Row="9" Text="{Binding odp4}" Grid.Column="1" Name="odp4" Height="25" VerticalAlignment="Top" TextAlignment="Center" Margin="0,6,0,0"/>
+        <Label Grid.Row="10" FontSize="15" HorizontalAlignment="Center" Content="id_quiz" Grid.ColumnSpan="1"></Label>
+        <TextBox Grid.Row="10" Text="{Binding Id_quiz}" Grid.Column="1" Name="id_quiz" Height="25" VerticalAlignment="Top" TextAlignment="Center" Margin="0,6,0,0"/>
+
+        <Button Grid.Row="11" Content="Stwórz" Grid.ColumnSpan="2"  Height="25" VerticalAlignment="Center"  ></Button>
+
+
     </Grid>
 </UserControl>
