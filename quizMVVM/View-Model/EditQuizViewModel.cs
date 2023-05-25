@@ -40,6 +40,7 @@ namespace quizMVVM.View_Model
             command = conn.CreateCommand();
             command.CommandText = $"SELECT pytania.tresc, pytania.odpowiedz_1, pytania.odpowiedz_2, pytania.odpowiedz_3, pytania.odpowiedz_4, quizy.nazwa_quizu FROM pytania, quizy WHERE pytania.id_quiz = (SELECT quizy.id_quiz FROM quizy WHERE public_id = {id_QUIZ}) LIMIT 1";
             reader = command.ExecuteReader();
+            
             string Name = (string)reader["nazwa_quizu"];
             string tresc = (string)reader["tresc"];
             string odp1 = (string)reader["odpowiedz_1"];
@@ -52,6 +53,9 @@ namespace quizMVVM.View_Model
             _odp3 = odp3;
             _odp4 = odp4;
             _name= Name;
+            Int64 intid = 0;
+            intid =(Int64)reader["id_quiz"];
+            quizid=intid.ToString();
             i++;
         }
         public void showNext(List<string> list)
@@ -78,6 +82,7 @@ namespace quizMVVM.View_Model
                 OnPropertyChanged(nameof(odp3));
                 OnPropertyChanged(nameof(odp4));
                 OnPropertyChanged(nameof(Name));
+                i++;
             }
            
         }
@@ -93,7 +98,8 @@ namespace quizMVVM.View_Model
         private string _odp4;
         private string _staraodp4;
         private string _tresc;
-
+        private string quizid;
+        private string questionid;
         public string OldName
         {
             get => _oldName;
@@ -209,6 +215,39 @@ namespace quizMVVM.View_Model
             }
         }
 
+        private ICommand _stworz;
+        public ICommand Stworz
+        {
+            get
+            {
+                if (_stworz == null)
+                    _stworz = new RelayCommand(i => MainModel.EditQuizName(conn,Name,quizid), null);
+                return _stworz;
+
+            }
+        }
+        private ICommand _EditQestion;
+        public ICommand EditQestion
+        {
+            get
+            {
+                if (_EditQestion == null)
+                    _EditQestion = new RelayCommand(i => MainModel.EditQuizQuestion(conn,Tresc,odp1,odp2,odp3,odp4,questionid), null);
+                return _EditQestion;
+
+            }
+        }
+        private ICommand _NextQestion;
+        public ICommand NextQestion
+        {
+            get
+            {
+                if (_NextQestion == null)
+                    _NextQestion = new RelayCommand(i => showNext(_list),null);
+                return _NextQestion;
+
+            }
+        }
         int i = 0;
     }
 }

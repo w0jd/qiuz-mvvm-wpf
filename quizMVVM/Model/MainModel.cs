@@ -118,20 +118,24 @@ namespace quizMVVM.Model
             reader = command.ExecuteReader();
             conn.Close();
         }
-        public static void EditQuizName(SQLiteConnection conn,string NewName,Int64 quizid)
+        public static void EditQuizName(SQLiteConnection conn,string NewName,string quizid)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
+            Int64 id = 0;
+            Int64.TryParse(quizid, out id);
             conn.Open();
             command = conn.CreateCommand();
             command.CommandText = $"UPDATE quizy SET nazwa_quizu='{NewName}' WHERE id_quiz={quizid} ";
             reader = command.ExecuteReader();
             conn.Close();
         }
-        public static void EditQuizQuestion(SQLiteConnection conn, string NowaTresc, string NowaOdp1, string NowaOdp2, string NowaOdp3, string NowaOdp4,Int64 questionId)
+        public static void EditQuizQuestion(SQLiteConnection conn, string NowaTresc, string NowaOdp1, string NowaOdp2, string NowaOdp3, string NowaOdp4,string questionId)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
+            Int64 id = 0;
+            Int64.TryParse(questionId, out id);
             conn.Open();
             command = conn.CreateCommand();
             command.CommandText = $"UPDATE pytania SET tresc='{NowaTresc}',odp1='{NowaOdp1}',odp2='{NowaOdp2}',odp3='{NowaOdp3}',,odp4='{NowaOdp4}' WHERE id_pytania={questionId} ";

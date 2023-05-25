@@ -86,8 +86,7 @@ namespace quizMVVM.View_Model
         {
             get { return this._id; }
             set
-            {
-             
+            {        
                 this._id = value;
                 this.OnPropertyChanged(nameof(Id)); 
                 var list = MainModel.ShowQuestions(conn, Id);
@@ -103,9 +102,7 @@ namespace quizMVVM.View_Model
                 set = rnd.Next(0, 9);
                 tys = rnd.Next(0, 9);
                 string edycja = jed.ToString() + dz.ToString() + set.ToString() + tys.ToString();
-                MainModel.AddQuiz(conn, Id, wybier, edycja);
-
-                 
+                MainModel.AddQuiz(conn, Id, wybier, edycja);          
             }
         }
     }
