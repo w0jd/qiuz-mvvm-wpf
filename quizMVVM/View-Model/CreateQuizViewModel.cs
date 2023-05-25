@@ -72,7 +72,7 @@ namespace quizMVVM.View_Model
             {
                 if (_AddQestion == null)
                     _AddQestion = new RelayCommand(i => CreateQuestions(), null) ;
-                Console.WriteLine("dupa1");
+               
                 return _AddQestion;
 
             }
@@ -89,8 +89,7 @@ namespace quizMVVM.View_Model
             {
              
                 this._id = value;
-                this.OnPropertyChanged(nameof(Id));
-
+                this.OnPropertyChanged(nameof(Id)); 
                 var list = MainModel.ShowQuestions(conn, Id);
                 conn.Close();
                 Random rnd = new Random();
