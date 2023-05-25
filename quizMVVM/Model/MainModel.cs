@@ -118,6 +118,26 @@ namespace quizMVVM.Model
             reader = command.ExecuteReader();
             conn.Close();
         }
+        public static void EditQuizName(SQLiteConnection conn,string NewName,Int64 quizid)
+        {
+            SQLiteDataReader reader;
+            SQLiteCommand command;
+            conn.Open();
+            command = conn.CreateCommand();
+            command.CommandText = $"UPDATE quizy SET nazwa_quizu='{NewName}' WHERE id_quiz={quizid} ";
+            reader = command.ExecuteReader();
+            conn.Close();
+        }
+        public static void EditQuizQuestion(SQLiteConnection conn, string NowaTresc, string NowaOdp1, string NowaOdp2, string NowaOdp3, string NowaOdp4,Int64 questionId)
+        {
+            SQLiteDataReader reader;
+            SQLiteCommand command;
+            conn.Open();
+            command = conn.CreateCommand();
+            command.CommandText = $"UPDATE pytania SET tresc='{NowaTresc}',odp1='{NowaOdp1}',odp2='{NowaOdp2}',odp3='{NowaOdp3}',,odp4='{NowaOdp4}' WHERE id_pytania={questionId} ";
+            reader = command.ExecuteReader();
+            conn.Close();
+        }
         public static void AddQuestion(SQLiteConnection conn,string tresc,string odp1,string odp2,string odp3,string odp4, Int64 id_quiz) 
         {
 
@@ -127,7 +147,7 @@ namespace quizMVVM.Model
             command = conn.CreateCommand();
             command.CommandText = $"INSERT INTO pytania(tresc,odpowiedz_1,odpowiedz_2,odpowiedz_3,odpowiedz_4,id_quiz) VALUES ('{tresc}','{odp1}','{odp2}','{odp3}','{odp4}','{id_quiz}')";
             reader = command.ExecuteReader();
-            MessageBox.Show("chuj");
+            MessageBox.Show("operacja wykonana");
             conn.Close();
         }
     }
