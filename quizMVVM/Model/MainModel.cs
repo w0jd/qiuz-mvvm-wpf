@@ -118,5 +118,17 @@ namespace quizMVVM.Model
             reader = command.ExecuteReader();
             conn.Close();
         }
+        public static void AddQuestion(SQLiteConnection conn,string tresc,string odp1,string odp2,string odp3,string odp4, Int64 id_quiz) 
+        {
+
+            SQLiteDataReader reader;
+            SQLiteCommand command;
+            conn.Open();
+            command = conn.CreateCommand();
+            command.CommandText = $"INSERT INTO pytania(tresc,odpowiedz_1,odpowiedz_2,odpowiedz_3,odpowiedz_4,id_quiz) VALUES ('{tresc}','{odp1}','{odp2}','{odp3}','{odp4}','{id_quiz}')";
+            reader = command.ExecuteReader();
+            MessageBox.Show("chuj");
+            conn.Close();
+        }
     }
 }

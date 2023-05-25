@@ -15,7 +15,44 @@ namespace quizMVVM.View_Model
     internal class CreateQuizViewModel : BaseViewModel
     {
         private string _id;
-        private string _Send;
+        private string _tresc;
+        private string _odp1;
+        private string _odp2;
+        private string _odp3;
+        private string _odp4;
+        private Int64 _id_quiz;
+        public string Tresc{
+            get => _tresc;
+            set
+            {
+                _tresc = value;
+            }
+        }
+        public string odp1
+        {
+            get => _odp1;
+            set { _odp1 = value; }
+        }
+        public string odp2
+        {
+            get => _odp2;
+            set { _odp2 = value; }
+        }
+        public string odp3
+        {
+            get => _odp3;
+            set { _odp3 = value; }
+        }
+        public string odp4
+        {
+            get => _odp4;
+            set { _odp4 = value; }
+        }
+        public Int64 Id_quiz
+        {
+            get => _id_quiz;
+            set { _id_quiz = value; }
+        }
         private Model.MainModel model = new Model.MainModel();
         static string databaseFilename = "quiz.db";
         static string localPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -24,10 +61,25 @@ namespace quizMVVM.View_Model
         static string ConPath = localPath.Replace("\\bin\\Debug", "");
         static private string databasePath = Path.Combine(ConPath, databaseFilename);
         static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
-        private string _Par;
+        private ICommand _AddQestion;
+        void CreateQuestions()
+        {
+            MainModel.AddQuestion(conn, _tresc, _odp1, _odp2,  _odp3, _odp4, _id_quiz);
+        }
+        public ICommand AddQestion
+        {
+            get
+            {
+                if (_AddQestion == null)
+                    _AddQestion = new RelayCommand(i => CreateQuestions(), null) ;
+                Console.WriteLine("dupa1");
+                return _AddQestion;
+
+            }
+        }
         public CreateQuizViewModel()
         {
-            Console.WriteLine("dupa");
+           // Console.WriteLine("dupa");
         }
 
         public string Id
