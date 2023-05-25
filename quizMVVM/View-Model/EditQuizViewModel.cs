@@ -48,11 +48,19 @@ namespace quizMVVM.View_Model
                 string odp3 = (string)reader["odpowiedz_3"];
                 string odp4 = (string)reader["odpowiedz_4"];
                 _tresc = tresc;
+                _staraTresc = tresc;
                 _odp1 = odp1;
+                _staraodp1 = odp1;
                 _odp2 = odp2;
+                _staraodp2 = odp2;
                 _odp3 = odp3;
+                _staraodp3 = odp3;
                 _odp4 = odp4;
+                _staraodp4 = odp4;
                 _name = Name;
+                _oldName = Name;
+
+
                 Int64 intid = 0;
                 intid = (Int64)reader["id_quiz"];
                 quizid = intid.ToString();
