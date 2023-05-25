@@ -24,7 +24,63 @@ namespace quizMVVM.View_Model
         static string ConPath = localPath.Replace("\\bin\\Debug", "");
         static private string databasePath = Path.Combine(ConPath, databaseFilename);
         static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
+        private List<string> _list;
+        private int _len;
 
+
+        EditQuizViewModel(int id_quiz)
+        {
+            SQLiteDataReader reader;
+            SQLiteCommand command;
+            conn.Close();
+            conn.Open();
+            Int64 id_QUIZ = 0;
+            string idQuizString = id_quiz.ToString();
+            Int64.TryParse(idQuizString, out id_QUIZ);
+            command = conn.CreateCommand();
+            command.CommandText = $"SELECT pytania.tresc, pytania.odpowiedz_1, pytania.odpowiedz_2, pytania.odpowiedz_3, pytania.odpowiedz_4, quizy.nazwa_quizu FROM pytania, quizy WHERE pytania.id_quiz = (SELECT quizy.id_quiz FROM quizy WHERE public_id = {id_QUIZ}) LIMIT 1";
+            reader = command.ExecuteReader();
+            string Name = (string)reader["nazwa_quizu"];
+            string tresc = (string)reader["tresc"];
+            string odp1 = (string)reader["odpowiedz_1"];
+            string odp2 = (string)reader["odpowiedz_2"];
+            string odp3 = (string)reader["odpowiedz_3"];
+            string odp4 = (string)reader["odpowiedz_4"];
+            _tresc = tresc;
+            _odp1 = odp1;
+            _odp2 = odp2;
+            _odp3 = odp3;
+            _odp4 = odp4;
+            _name= Name;
+            i++;
+        }
+        public void showNext(List<string> list)
+        {
+
+       
+            int questionNumber = i;
+            if (list.Count() > i)
+            {
+                _list = list;
+                var ciag = list[questionNumber].Split(',');
+                int len = _list.Count;
+                _len = len;
+    
+                _tresc = ciag[1];
+                _odp1 = ciag[2];
+                _odp2 = ciag[3];
+                _odp3 = ciag[4];
+                _odp4 = ciag[5];
+                _name = ciag[6];
+                OnPropertyChanged(nameof(odp1));
+                OnPropertyChanged(nameof(Tresc));
+                OnPropertyChanged(nameof(odp2));
+                OnPropertyChanged(nameof(odp3));
+                OnPropertyChanged(nameof(odp4));
+                OnPropertyChanged(nameof(Name));
+            }
+           
+        }
         private string _odp1;
         private string _staraodp1;
         private string _name;
@@ -73,7 +129,6 @@ namespace quizMVVM.View_Model
             set
             {
                 _name = value;
-                OnPropertyChanged(nameof(Name));
             }
         }
 
@@ -106,7 +161,7 @@ namespace quizMVVM.View_Model
             }
         }
 
-        public string Odp3
+        public string odp3
         {
             get => _odp3;
             set
@@ -125,7 +180,7 @@ namespace quizMVVM.View_Model
             }
         }
 
-        public string Odp4
+        public string odp4
         {
             get => _odp4;
             set
