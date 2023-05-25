@@ -55,6 +55,33 @@ namespace quizMVVM.View_Model
 
             }
         }
+        private ICommand _poka;
+        public ICommand Poka
+        {
+            get
+            {
+                if (_poka == null)
+                    _poka = new RelayCommand(i => patrzaj(), null);
+                return _poka;
+
+            }
+        }
+        void patrzaj()
+        {
+            var list = MainModel.ShowQuestions(conn, Id);
+            conn.Close();
+            if (list.Count() != 0)
+            {
+                var Questions = new Questions(list);
+                var window = new Window();
+                window.Content = Questions;
+                window.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie ma takiego quizu");
+            }
+        }
         public void idzDoEdycji()
         {
             conn.Close();
@@ -76,19 +103,7 @@ namespace quizMVVM.View_Model
                     this._id = value;
                     this.OnPropertyChanged(nameof(Id));
 
-                    var list=MainModel.ShowQuestions(conn, Id);
-                    conn.Close();
-                    if (list.Count()!=0)
-                    {
-                        var Questions = new Questions(list);
-                        var window = new Window();
-                        window.Content = Questions;
-                        window.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nie ma takiego quizu");
-                    }
+            
                // }
             } 
         }

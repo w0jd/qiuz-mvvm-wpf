@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.IO;
 using System.Windows;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace quizMVVM.Model
 {
@@ -61,6 +62,8 @@ namespace quizMVVM.Model
         
        public static List<string> ShowAllQuizes(SQLiteConnection conn)
         {
+            conn.Close();
+
             SQLiteDataReader reader;
             SQLiteCommand command;
             conn.Open();
@@ -110,6 +113,8 @@ namespace quizMVVM.Model
         }
         public static void AddQuiz(SQLiteConnection conn,string nazwa,string idCzyt,string idEdit)
         {
+            conn.Close();
+
             SQLiteDataReader reader;
             SQLiteCommand command;
             conn.Open();
@@ -120,6 +125,8 @@ namespace quizMVVM.Model
         }
         public static void EditQuizName(SQLiteConnection conn,string NewName,string quizid)
         {
+            conn.Close();
+
             SQLiteDataReader reader;
             SQLiteCommand command;
             Int64 id = 0;
@@ -132,24 +139,28 @@ namespace quizMVVM.Model
         }
         public static void EditQuizQuestion(SQLiteConnection conn, string NowaTresc, string NowaOdp1, string NowaOdp2, string NowaOdp3, string NowaOdp4,string questionId)
         {
+            conn.Close();
+
             SQLiteDataReader reader;
             SQLiteCommand command;
-            Int64 id = 0;
+            Int64 id;
             Int64.TryParse(questionId, out id);
             conn.Open();
             command = conn.CreateCommand();
-            command.CommandText = $"UPDATE pytania SET tresc='{NowaTresc}',odp1='{NowaOdp1}',odp2='{NowaOdp2}',odp3='{NowaOdp3}',,odp4='{NowaOdp4}' WHERE id_pytania={id} ";
+
+            command.CommandText = $"UPDATE pytania SET tresc = '{NowaTresc}', odpowiedz_1 = '{NowaOdp1}', odpowiedz_2 = '{NowaOdp2}', odpowiedz_3 = '{NowaOdp3}', odpowiedz_4 = '{NowaOdp4}' WHERE id_pytania = {id}";
             reader = command.ExecuteReader();
             conn.Close();
         }
         public static void AddQuestion(SQLiteConnection conn,string tresc,string odp1,string odp2,string odp3,string odp4, Int64 id_quiz) 
         {
+            conn.Close();
 
             SQLiteDataReader reader;
             SQLiteCommand command;
             conn.Open();
             command = conn.CreateCommand();
-            command.CommandText = $"INSERT INTO pytania(tresc,odpowiedz_1,odpowiedz_2,odpowiedz_3,odpowiedz_4,id_quiz) VALUES ('{tresc}','{odp1}','{odp2}','{odp3}','{odp4}','{id_quiz}')";
+            command.CommandText = $"INSERT INTO pytania(tresc,odpowiedz_2,odpowiedz_3,odpowiedz_4,id_quiz) VALUES ('{tresc}','{odp1}','{odp2}','{odp3}','{odp4}','{id_quiz}')";
             reader = command.ExecuteReader();
             MessageBox.Show("operacja wykonana");
             conn.Close();

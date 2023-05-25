@@ -38,9 +38,9 @@ namespace quizMVVM.View_Model
             command = conn.CreateCommand();
             command.CommandText = $"SELECT pytania.tresc, pytania.odpowiedz_1, pytania.odpowiedz_2, pytania.odpowiedz_3, pytania.odpowiedz_4, quizy.nazwa_quizu,quizy.id_quiz FROM pytania, quizy WHERE pytania.id_quiz = (SELECT quizy.id_quiz FROM quizy WHERE id_quiz = {id_QUIZ}) LIMIT 1";
             reader = command.ExecuteReader();
-
             if (reader.Read())
             {
+                questionid = i.ToString();
                 string Name = (string)reader["nazwa_quizu"];
                 string tresc = (string)reader["tresc"];
                 string odp1 = (string)reader["odpowiedz_1"];
@@ -59,10 +59,7 @@ namespace quizMVVM.View_Model
                 _staraodp4 = odp4;
                 _name = Name;
                 _oldName = Name;
-
-
-                Int64 intid = 0;
-                intid = (Int64)reader["id_quiz"];
+                long intid = (Int64)reader["id_quiz"];
                 quizid = intid.ToString();
                 i++;
             }
@@ -225,7 +222,9 @@ namespace quizMVVM.View_Model
             get
             {
                 if (_EditQestion == null)
-                    _EditQestion = new RelayCommand(i => MainModel.EditQuizQuestion(conn,Tresc,odp1,odp2,odp3,odp4,questionid), null);
+                    questionid = i.ToString();
+                _EditQestion = new RelayCommand(i => MainModel.EditQuizQuestion(conn,Tresc,odp1,odp2,odp3,odp4,questionid), null);
+                questionid = i.ToString();
                 return _EditQestion;
 
             }
@@ -236,7 +235,9 @@ namespace quizMVVM.View_Model
             get
             {
                 if (_NextQestion == null)
-                    _NextQestion = new RelayCommand(i => showNext(_list),null);
+                    questionid = i.ToString();
+                _NextQestion = new RelayCommand(i => showNext(_list),null);
+                questionid = i.ToString();
                 return _NextQestion;
 
             }
