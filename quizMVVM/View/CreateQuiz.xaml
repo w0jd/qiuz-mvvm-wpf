@@ -35,7 +35,7 @@
         <Label Grid.Row="5" FontSize="15" HorizontalAlignment="Center" Content="Tresc pytania" Grid.ColumnSpan="1"></Label>
 
         <TextBox Grid.Row="5" Text="{Binding Tresc}" Grid.Column="1" Name="tresc" Height="25" VerticalAlignment="Center" TextAlignment="Center" TextChanged="tresc_TextChanged"/>
-        <Label Grid.Row="6" FontSize="15" HorizontalAlignment="Center"  Grid.Column="0" Content="odp1" Grid.ColumnSpan="1"></Label>
+        <Label Grid.Row="6" FontSize="15" HorizontalAlignment="Center"  Grid.Column="0" Content="prwadiłowa odp" Grid.ColumnSpan="1"></Label>
         <TextBox Grid.Row="6" Text="{Binding odp1}" Name="odp1" Height="25" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1"/>
         <Label Grid.Row="7" FontSize="15" HorizontalAlignment="Center" Content="odp2" Grid.ColumnSpan="1"></Label>
         <TextBox Grid.Row="7" Text="{Binding odp2}" Grid.Column="1" Name="odp2" Height="25" VerticalAlignment="Center" TextAlignment="Center"/>
@@ -46,7 +46,7 @@
         <Label Grid.Row="10" FontSize="15" HorizontalAlignment="Center" Content="id_quiz" Grid.ColumnSpan="1"></Label>
         <TextBox Grid.Row="10" Text="{Binding Id_quiz}" Grid.Column="1" Name="id_quiz" Height="25" VerticalAlignment="Top" TextAlignment="Center" Margin="0,6,0,0"/>
 
-        <Button Grid.Row="11" Content="Stwórz" Grid.ColumnSpan="2"  Height="25" VerticalAlignment="Center"  ></Button>
+        <Button Grid.Row="11" Content="Stwórz" Grid.ColumnSpan="2"  Command="{Binding AddQestion}"  Height="25" VerticalAlignment="Top" Margin="0,8,0,0"  ></Button>
 
 
     </Grid>
