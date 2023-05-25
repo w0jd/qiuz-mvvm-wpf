@@ -221,8 +221,8 @@ namespace quizMVVM.View_Model
         {
             get
             {
+                questionid = i.ToString();
                 if (_EditQestion == null)
-                    questionid = i.ToString();
                 _EditQestion = new RelayCommand(i => MainModel.EditQuizQuestion(conn,Tresc,odp1,odp2,odp3,odp4,questionid), null);
                 questionid = i.ToString();
                 return _EditQestion;
@@ -234,8 +234,8 @@ namespace quizMVVM.View_Model
         {
             get
             {
+                questionid = i.ToString();
                 if (_NextQestion == null)
-                    questionid = i.ToString();
                 _NextQestion = new RelayCommand(i => showNext(_list),null);
                 questionid = i.ToString();
                 return _NextQestion;
