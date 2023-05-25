@@ -1,4 +1,5 @@
-﻿using System;
+﻿using quizMVVM.View_Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace quizMVVM.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy CreateQuiz.xaml
+    /// Interaction logic for EditQuiz.xaml
     /// </summary>
-    public partial class CreateQuiz : UserControl
+    public partial class EditQuiz : UserControl
     {
-        public CreateQuiz()
+        public EditQuiz(int Id)
         {
+            DataContext = new EditQuizViewModel(Id);
             InitializeComponent();
-        }
-
-        private void tresc_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

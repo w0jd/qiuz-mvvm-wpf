@@ -126,7 +126,7 @@ namespace quizMVVM.Model
             Int64.TryParse(quizid, out id);
             conn.Open();
             command = conn.CreateCommand();
-            command.CommandText = $"UPDATE quizy SET nazwa_quizu='{NewName}' WHERE id_quiz={quizid} ";
+            command.CommandText = $"UPDATE quizy SET nazwa_quizu='{NewName}' WHERE id_quiz={id} ";
             reader = command.ExecuteReader();
             conn.Close();
         }
@@ -138,7 +138,7 @@ namespace quizMVVM.Model
             Int64.TryParse(questionId, out id);
             conn.Open();
             command = conn.CreateCommand();
-            command.CommandText = $"UPDATE pytania SET tresc='{NowaTresc}',odp1='{NowaOdp1}',odp2='{NowaOdp2}',odp3='{NowaOdp3}',,odp4='{NowaOdp4}' WHERE id_pytania={questionId} ";
+            command.CommandText = $"UPDATE pytania SET tresc='{NowaTresc}',odp1='{NowaOdp1}',odp2='{NowaOdp2}',odp3='{NowaOdp3}',,odp4='{NowaOdp4}' WHERE id_pytania={id} ";
             reader = command.ExecuteReader();
             conn.Close();
         }

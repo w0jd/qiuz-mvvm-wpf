@@ -70,3 +70,5 @@ C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.cspro
 C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.csproj.CopyComplete
 C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.exe
 C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\quizMVVM.pdb
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\View\EditQuiz.g.cs
+C:\Users\Wojtek\Documents\GitHub\qiuz-mvvm-wpf\quizMVVM\obj\Debug\View\EditQuiz.baml

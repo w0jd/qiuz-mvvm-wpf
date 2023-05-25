@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="quizMVVM.View.CreateQuiz"
+﻿<UserControl x:Class="quizMVVM.View.EditQuiz"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -30,13 +30,13 @@
         <Label Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="1"  FontSize="15" HorizontalAlignment="Center" Content="obene "></Label>
         <Label Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="1"  FontSize="15" HorizontalAlignment="Center" Content="nowe"></Label>
         <TextBlock Grid.Row="2" Text="{Binding OldName}" Grid.ColumnSpan="1"></TextBlock>
-        <TextBox Grid.Row="2" Text="{Binding Nane}" Grid.ColumnSpan="1" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Center"  Grid.Column="1"   TextAlignment="Center"/>
+        <TextBox Grid.Row="2" Text="{Binding Name}" Grid.ColumnSpan="1" Name="QuizCodeTextBox" Height="25" VerticalAlignment="Center"  Grid.Column="1"   TextAlignment="Center"/>
         <ContentControl Grid.Row="2" Grid.ColumnSpan="1" Content="{Binding Questions}" />
-        <Button Grid.Row="3" Content="Stwórz" Grid.ColumnSpan="2"  Height="25" VerticalAlignment="Center"  Command="{Binding Send}" CommandParameter="{Binding Par}"  ></Button>
+        <Button Grid.Row="3" Content="Stwórz" Grid.ColumnSpan="2"  Height="25" VerticalAlignment="Center"  Command="{Binding Stworz}" CommandParameter="{Binding Par}"  ></Button>
         <Label Grid.Row="4" FontSize="15" HorizontalAlignment="Center" Content="Add questions" Grid.ColumnSpan="2"></Label>
         <Label Grid.Row="5" FontSize="15" HorizontalAlignment="Center" Content="{Binding StaraTresc}" Grid.ColumnSpan="1"></Label>
 
-        <TextBox Grid.Row="5" Text="{Binding Tresc}" Grid.Column="1" Name="tresc" Height="25" VerticalAlignment="Center" TextAlignment="Center" TextChanged="tresc_TextChanged"/>
+        <TextBox Grid.Row="5" Text="{Binding Tresc}" Grid.Column="1" Name="tresc" Height="25" VerticalAlignment="Center" TextAlignment="Center"/>
         <Label Grid.Row="6" FontSize="15" HorizontalAlignment="Center"  Grid.Column="0" Content="{Binding StaraOdp1}" Grid.ColumnSpan="1"></Label>
         <TextBox Grid.Row="6" Text="{Binding odp1}" Name="odp1" Height="25" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1"/>
         <Label Grid.Row="7" FontSize="15" HorizontalAlignment="Center"  Content="{Binding StaraOdp2}" Grid.ColumnSpan="1"></Label>
@@ -45,10 +45,11 @@
         <TextBox Grid.Row="8" Text="{Binding odp3}" Name="odp3" Height="25" VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1"/>
         <Label Grid.Row="9" FontSize="15" HorizontalAlignment="Center" Content="{Binding StaraOdp4}" Grid.ColumnSpan="1"></Label>
         <TextBox Grid.Row="9" Text="{Binding odp4}" Grid.Column="1" Name="odp4" Height="25" VerticalAlignment="Top" TextAlignment="Center" Margin="0,6,0,0"/>
-        
+
         <Button Grid.Row="10" Content="Edytuj" Grid.ColumnSpan="2"  Command="{Binding EditQestion}"  Height="25" VerticalAlignment="Top" Margin="0,8,0,0"  ></Button>
         <Button Grid.Row="11" Content="Natsępne" Grid.ColumnSpan="2"  Command="{Binding NextQestion}"  Height="25" VerticalAlignment="Top" Margin="0,8,0,0"  ></Button>
 
 
     </Grid>
 </UserControl>
+

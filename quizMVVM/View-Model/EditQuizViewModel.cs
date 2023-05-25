@@ -26,9 +26,7 @@ namespace quizMVVM.View_Model
         static SQLiteConnection conn = new SQLiteConnection($"Data Source={databasePath}; Version=3");
         private List<string> _list;
         private int _len;
-
-
-        EditQuizViewModel(int id_quiz)
+        public EditQuizViewModel(int id_quiz)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
@@ -38,38 +36,38 @@ namespace quizMVVM.View_Model
             string idQuizString = id_quiz.ToString();
             Int64.TryParse(idQuizString, out id_QUIZ);
             command = conn.CreateCommand();
-            command.CommandText = $"SELECT pytania.tresc, pytania.odpowiedz_1, pytania.odpowiedz_2, pytania.odpowiedz_3, pytania.odpowiedz_4, quizy.nazwa_quizu FROM pytania, quizy WHERE pytania.id_quiz = (SELECT quizy.id_quiz FROM quizy WHERE public_id = {id_QUIZ}) LIMIT 1";
+            command.CommandText = $"SELECT pytania.tresc, pytania.odpowiedz_1, pytania.odpowiedz_2, pytania.odpowiedz_3, pytania.odpowiedz_4, quizy.nazwa_quizu,quizy.id_quiz FROM pytania, quizy WHERE pytania.id_quiz = (SELECT quizy.id_quiz FROM quizy WHERE id_quiz = {id_QUIZ}) LIMIT 1";
             reader = command.ExecuteReader();
-            
-            string Name = (string)reader["nazwa_quizu"];
-            string tresc = (string)reader["tresc"];
-            string odp1 = (string)reader["odpowiedz_1"];
-            string odp2 = (string)reader["odpowiedz_2"];
-            string odp3 = (string)reader["odpowiedz_3"];
-            string odp4 = (string)reader["odpowiedz_4"];
-            _tresc = tresc;
-            _odp1 = odp1;
-            _odp2 = odp2;
-            _odp3 = odp3;
-            _odp4 = odp4;
-            _name= Name;
-            Int64 intid = 0;
-            intid =(Int64)reader["id_quiz"];
-            quizid=intid.ToString();
-            i++;
+
+            if (reader.Read())
+            {
+                string Name = (string)reader["nazwa_quizu"];
+                string tresc = (string)reader["tresc"];
+                string odp1 = (string)reader["odpowiedz_1"];
+                string odp2 = (string)reader["odpowiedz_2"];
+                string odp3 = (string)reader["odpowiedz_3"];
+                string odp4 = (string)reader["odpowiedz_4"];
+                _tresc = tresc;
+                _odp1 = odp1;
+                _odp2 = odp2;
+                _odp3 = odp3;
+                _odp4 = odp4;
+                _name = Name;
+                Int64 intid = 0;
+                intid = (Int64)reader["id_quiz"];
+                quizid = intid.ToString();
+                i++;
+            }
         }
         public void showNext(List<string> list)
         {
-
-       
             int questionNumber = i;
             if (list.Count() > i)
             {
                 _list = list;
                 var ciag = list[questionNumber].Split(',');
                 int len = _list.Count;
-                _len = len;
-    
+                _len = len;   
                 _tresc = ciag[1];
                 _odp1 = ciag[2];
                 _odp2 = ciag[3];
@@ -83,8 +81,7 @@ namespace quizMVVM.View_Model
                 OnPropertyChanged(nameof(odp4));
                 OnPropertyChanged(nameof(Name));
                 i++;
-            }
-           
+            }          
         }
         private string _odp1;
         private string _staraodp1;
@@ -114,11 +111,9 @@ namespace quizMVVM.View_Model
             get => _odp1;
             set
             {
-                _odp1 = value;
-           
+                _odp1 = value;        
             }
         }
-
         public string StaraOdp1
         {
             get => _staraodp1;
@@ -215,17 +210,7 @@ namespace quizMVVM.View_Model
             }
         }
 
-        private ICommand _stworz;
-        public ICommand Stworz
-        {
-            get
-            {
-                if (_stworz == null)
-                    _stworz = new RelayCommand(i => MainModel.EditQuizName(conn,Name,quizid), null);
-                return _stworz;
-
-            }
-        }
+    
         private ICommand _EditQestion;
         public ICommand EditQestion
         {

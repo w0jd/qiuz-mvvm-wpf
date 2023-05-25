@@ -12,6 +12,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
 using quizMVVM.View;
+using System.Xml.Linq;
 
 namespace quizMVVM.View_Model
 {
@@ -43,6 +44,28 @@ namespace quizMVVM.View_Model
             } 
         }
 
+        private ICommand _edytuj;
+        public ICommand Edyuj
+        {
+            get
+            {
+                if (_edytuj == null)
+                    _edytuj = new RelayCommand(i => idzDoEdycji(), null);
+                return _edytuj;
+
+            }
+        }
+        public void idzDoEdycji()
+        {
+            conn.Close();
+            int ajdi = 0;
+            int.TryParse(Id,out ajdi);
+            var EditQuiz = new EditQuiz(ajdi);
+            var window = new Window();
+            window.Content = EditQuiz;
+            window.Show();
+
+        }
         public string Id 
         {
             get { return this._id; }

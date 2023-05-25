@@ -76,6 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\UpdateViewCommand.cs" />
+    <Compile Include="View-Model\EditQuizViewModel.cs" />
     <Compile Include="View-Model\QuestionsViewModel.cs" />
     <Compile Include="View-Model\BaseViewModel.cs" />
     <Compile Include="View-Model\CreateQuizViewModel.cs" />
@@ -84,6 +85,9 @@
     <Compile Include="View-Model\SolveQuizViewModel.cs" />
     <Compile Include="View\CreateQuiz.xaml.cs">
       <DependentUpon>CreateQuiz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditQuiz.xaml.cs">
+      <DependentUpon>EditQuiz.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Questions.xaml.cs">
       <DependentUpon>Questions.xaml</DependentUpon>
@@ -104,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\CreateQuiz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditQuiz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
