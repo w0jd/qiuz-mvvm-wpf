@@ -64,8 +64,9 @@ namespace quizMVVM.View_Model
                 i++;
             }
         }
-        public void showNext(List<string> list)
+        public void showNext()
         {
+            var list = MainModel.ShowQuestions(conn, quizid);
             int questionNumber = i;
             if (list.Count() > i)
             {
@@ -74,12 +75,22 @@ namespace quizMVVM.View_Model
                 int len = _list.Count;
                 _len = len;   
                 _tresc = ciag[1];
+                _staraTresc = _tresc;
+
                 _odp1 = ciag[2];
+                _staraodp1 = _odp1;
                 _odp2 = ciag[3];
+                _staraodp2 = _odp2;
+
                 _odp3 = ciag[4];
+                _staraodp3 = _odp3;
+
                 _odp4 = ciag[5];
+                _staraodp1 = _odp4;
+
                 _name = ciag[6];
                 OnPropertyChanged(nameof(odp1));
+                OnPropertyChanged(nameof(StaraOdp1));
                 OnPropertyChanged(nameof(Tresc));
                 OnPropertyChanged(nameof(odp2));
                 OnPropertyChanged(nameof(odp3));
@@ -236,7 +247,7 @@ namespace quizMVVM.View_Model
             {
                 questionid = i.ToString();
                 if (_NextQestion == null)
-                _NextQestion = new RelayCommand(i => showNext(_list),null);
+                _NextQestion = new RelayCommand(i => showNext(),null);
                 questionid = i.ToString();
                 return _NextQestion;
 
